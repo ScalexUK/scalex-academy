@@ -1,0 +1,10 @@
+.claude/
+.vercel/
+node_modules/
+leads.json
+
+# Reference-only marketing assets not used by the live site
+Scalex logo.jpeg
+image 1.png
+image 2.png
+wellcome tiktok class.png

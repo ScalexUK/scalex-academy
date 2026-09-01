@@ -1,0 +1,382 @@
+/* =========================================================
+   ScaleX Academy UK — Design System
+   Matches the client's real logo: deep navy with a blue
+   gradient "X" mark. Dark navy header/hero/footer, blue
+   accent on white content sections in between. Rounded
+   cards, generous spacing, soft shadows.
+   Tokens here drive every component — change values, not
+   individual rules, when adjusting the look.
+   ========================================================= */
+
+:root {
+  /* Brand colors — blue gradient accent, matching the logo's X mark */
+  --brand-600: #1e6fe0;
+  --brand-500: #2f8fff;
+  --brand-400: #5ab8ff;
+  --brand-100: #e4f1ff;
+
+  /* Navy — matches the logo's badge background; used for header/hero/footer */
+  --navy-950: #05070f;
+  --navy-900: #0a0f1e;
+  --navy-800: #101a30;
+  --navy-700: #182548;
+
+  --charcoal-900: #222b35;
+  --charcoal-700: #4a5568;
+  --charcoal-500: #717d8a;
+
+  --white: #ffffff;
+  --gray-50: #f8f9fb;
+  --gray-100: #f1f3f6;
+  --gray-200: #e4e8ed;
+  --gray-300: #d3d9e0;
+
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1da851;
+  --facebook: #1877f2;
+  --amazon-accent: #f5a623;
+  --tiktok-accent: #1b1b1f;
+  --ebay-accent: #3665f3;
+
+  --gradient-brand: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+  --gradient-navy: linear-gradient(180deg, var(--navy-900), var(--navy-950));
+
+  /* Typography */
+  --font-heading: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(34, 43, 53, 0.06);
+  --shadow-md: 0 10px 28px rgba(34, 43, 53, 0.1);
+  --shadow-lg: 0 20px 48px rgba(34, 43, 53, 0.14);
+
+  --header-height: 80px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--charcoal-900);
+  background: var(--white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+button { font-family: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 var(--space-3);
+  color: var(--charcoal-900);
+  font-weight: 700;
+}
+
+p { margin: 0 0 var(--space-4); }
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+section { padding: var(--space-9) 0; scroll-margin-top: var(--header-height); }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-600);
+  background: var(--brand-100);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto var(--space-7);
+  text-align: center;
+}
+
+.section-head h2 { font-size: clamp(28px, 4vw, 40px); }
+
+.section-head p {
+  color: var(--charcoal-700);
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+.text-center { text-align: center; }
+.bg-tint { background: var(--gray-50); }
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn svg { width: 18px; height: 18px; }
+
+.btn-primary {
+  background: var(--gradient-brand);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.btn-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--charcoal-900);
+  border: 1.5px solid var(--gray-300);
+}
+.btn-outline:hover { border-color: var(--brand-500); color: var(--brand-600); }
+
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+.btn-outline-light:hover { background: rgba(255, 255, 255, 0.22); }
+
+.btn-white {
+  background: var(--white);
+  color: var(--brand-600);
+}
+.btn-white:hover { transform: translateY(-2px); }
+
+.btn-sm { padding: 10px 20px; font-size: 14px; }
+.btn-block { width: 100%; }
+
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+}
+
+.logo-mark { width: 38px; height: 38px; flex-shrink: 0; }
+
+.logo-text {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+}
+.logo-text span { color: var(--brand-400); }
+.logo-text small {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gray-300);
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  /* Solid background, not backdrop-filter: a blur here would make
+     .site-header the containing block for its position:fixed .main-nav
+     child (mobile menu) and collapse its full-viewport inset to zero height. */
+  background: var(--navy-900);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-header .container {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.main-nav a {
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--gray-300);
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+  color: var(--brand-400);
+  border-color: var(--brand-500);
+}
+
+.header-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: var(--space-2);
+}
+.nav-toggle svg { width: 26px; height: 26px; }
+
+@media (max-width: 980px) {
+  .main-nav {
+    position: fixed;
+    inset: var(--header-height) 0 0 0;
+    background: var(--navy-900);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+  }
+  .main-nav.open { transform: translateX(0); }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-6) var(--space-5);
+    gap: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 17px;
+  }
+
+  .header-actions .btn-whatsapp span.long { display: none; }
+  .nav-toggle { display: inline-flex; }
+}
+
+@media (max-width: 400px) {
+  .header-actions .btn-whatsapp { padding: 10px 14px; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--navy-950);
+  color: var(--gray-300);
+  padding: var(--space-8) 0 var(--space-5);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-7);
+  padding-bottom: var(--space-7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-brand p {
+  margin-top: var(--space-4);
+  font-size: 14px;
+  color: var(--gray-300);
+  max-width: 300px;
+}
+
+.footer-brand .logo-text { color: var(--white); }
+.footer-brand .logo-text small { color: var(--gray-300); }
+
+.footer-col h4 { color: var(--white); font-size: 15px; margin-bottom: var(--space-4); }
+.footer-col ul { display: flex; flex-direction: column; gap: var(--space-3); }
+.footer-col a, .footer-col span { font-size: 14px; color: var(--gray-300); }
+.footer-col a:hover { color: var(--brand-400); }
+
+.social-row { display: flex; gap: var(--space-3); margin-top: var(--space-5); }
+.social-row a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-row svg { width: 18px; height: 18px; }
+.social-row a:hover { border-color: var(--brand-400); color: var(--brand-400); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-5);
+  font-size: 13px;
+  color: var(--charcoal-500);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}

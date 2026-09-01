@@ -1,0 +1,182 @@
+/* =========================================================
+   ScaleX Assistant — chatbot widget
+   Rebuilt to match the coral/charcoal design system (was
+   previously styled for the earlier navy/blue brand).
+   ========================================================= */
+
+.chat-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  border: none;
+  transition: transform 0.15s ease;
+}
+.chat-launcher:hover { transform: translateY(-2px); }
+.chat-launcher svg { width: 26px; height: 26px; }
+
+.chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 370px;
+  max-width: calc(100vw - 32px);
+  height: 540px;
+  max-height: calc(100vh - 48px);
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: var(--font-body);
+}
+
+.chat-widget.hidden { display: none; }
+
+.chat-header {
+  background: var(--gradient-brand);
+  color: #fff;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.chat-header-info { display: flex; align-items: center; gap: 10px; }
+.chat-header-info .logo-mark { width: 30px; height: 30px; }
+.chat-header-title { font-family: var(--font-heading); font-weight: 600; font-size: 15px; }
+.chat-header-sub { font-size: 12px; color: rgba(255, 255, 255, 0.85); }
+
+.chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.85;
+}
+.chat-close:hover { opacity: 1; }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--gray-50);
+}
+
+.msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.msg.bot {
+  background: #fff;
+  border: 1px solid var(--gray-100);
+  color: var(--charcoal-900);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.msg.user {
+  background: var(--gradient-brand);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 12px;
+  background: var(--gray-50);
+  flex-shrink: 0;
+}
+
+.quick-reply {
+  border: 1px solid var(--brand-500);
+  color: var(--brand-600);
+  background: #fff;
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.quick-reply:hover { background: var(--brand-100); }
+
+.quick-reply.is-link {
+  background: var(--whatsapp);
+  border-color: var(--whatsapp);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.quick-reply.is-link:hover { background: var(--whatsapp-dark); }
+.quick-reply.is-link svg { width: 14px; height: 14px; }
+
+.quick-reply.is-facebook {
+  background: var(--facebook);
+  border-color: var(--facebook);
+  color: #fff;
+}
+.quick-reply.is-facebook:hover { opacity: 0.9; }
+
+.chat-form {
+  display: flex;
+  border-top: 1px solid var(--gray-100);
+  padding: 12px;
+  gap: 8px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+.chat-input:focus { outline: none; border-color: var(--brand-500); }
+
+.chat-send {
+  background: var(--gradient-brand);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chat-send:disabled { opacity: 0.5; cursor: default; }
+
+@media (max-width: 480px) {
+  .chat-widget { width: calc(100vw - 24px); right: 12px; bottom: 12px; height: calc(100vh - 96px); }
+  .chat-launcher { right: 16px; bottom: 16px; }
+}

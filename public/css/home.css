@@ -1,0 +1,458 @@
+/* =========================================================
+   Homepage section styles
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: var(--space-9) 0 var(--space-8);
+  background: var(--gradient-navy);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: -140px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(47, 143, 255, 0.28), transparent 70%);
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-400);
+  margin-bottom: var(--space-5);
+}
+.hero-badge svg { width: 14px; height: 14px; }
+
+.hero h1 { font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.01em; color: var(--white); }
+.hero h1 .accent { color: var(--brand-400); }
+
+.hero-lead { font-size: 18px; color: var(--gray-200); max-width: 480px; }
+
+.hero-actions { display: flex; gap: var(--space-4); margin-top: var(--space-6); flex-wrap: wrap; }
+
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+
+.hero-card-stack { position: relative; width: 100%; max-width: 420px; }
+
+.floating-card {
+  position: absolute;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.floating-card .icon-badge {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-main-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* The real logo already contains the wordmark, tagline and platform
+   icons, so it's shown large here instead of rebuilding that content
+   in HTML/CSS (see index.html — this replaced a separate h3/tagline/
+   platform-pills block that duplicated what the image already says). */
+.hero-logo-full { width: 100%; max-width: 300px; margin: 0 auto; border-radius: 50%; }
+
+.card-top-left { top: -20px; left: -30px; }
+.card-bottom-right { bottom: -20px; right: -30px; }
+
+@media (max-width: 980px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-lead { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-visual { margin-top: var(--space-8); }
+  .floating-card { display: none; }
+}
+
+/* ---------- Training overview cards ---------- */
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.training-card {
+  padding: var(--space-6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.training-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.training-icon {
+  width: 56px; height: 56px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-5);
+}
+
+.training-card h3 { font-size: 20px; }
+.training-card p.desc { color: var(--charcoal-700); font-size: 15px; }
+
+.training-meta { display: flex; flex-direction: column; gap: var(--space-2); margin: var(--space-4) 0 var(--space-5); font-size: 14px; color: var(--charcoal-700); }
+.training-meta div { display: flex; align-items: center; gap: var(--space-2); }
+.training-meta svg { width: 16px; height: 16px; color: var(--brand-500); flex-shrink: 0; }
+.training-meta strong { color: var(--charcoal-900); }
+
+.training-card .btn { margin-top: auto; }
+
+.training-card.soon { background: var(--gray-50); border-style: dashed; }
+.badge-soon {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--amazon-accent);
+  background: #fff6e5;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+  width: fit-content;
+}
+
+@media (max-width: 980px) { .training-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .training-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Training posters (TikTok / eBay) ---------- */
+.poster {
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+.poster-tiktok { background: linear-gradient(135deg, #171719, #2a2a2f); color: var(--white); }
+.poster-ebay { background: linear-gradient(135deg, #eef3ff, #f7faff); border: 1px solid var(--gray-200); }
+
+.poster-icon {
+  width: 64px; height: 64px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-5);
+}
+
+.poster h2 { font-size: clamp(24px, 3vw, 32px); }
+.poster-tiktok h2, .poster-tiktok .eyebrow { color: var(--white); }
+.poster-tiktok .eyebrow { background: rgba(255, 255, 255, 0.12); color: #5eead4; }
+
+.poster-list { display: flex; flex-direction: column; gap: var(--space-3); margin: var(--space-5) 0 var(--space-6); }
+.poster-list div { display: flex; align-items: center; gap: var(--space-3); font-size: 15px; }
+.poster-list svg { width: 20px; height: 20px; flex-shrink: 0; }
+.poster-tiktok .poster-list svg { color: #5eead4; }
+.poster-ebay .poster-list svg { color: var(--ebay-accent); }
+.poster-tiktok .poster-list { color: rgba(255, 255, 255, 0.85); }
+.poster-ebay .poster-list { color: var(--charcoal-700); }
+
+.poster-timing {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.timing-chip {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+}
+.poster-tiktok .timing-chip { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); }
+.poster-ebay .timing-chip { background: var(--white); border: 1px solid var(--gray-200); }
+.timing-chip strong { display: block; font-family: var(--font-heading); font-size: 15px; }
+.poster-tiktok .timing-chip strong { color: var(--white); }
+.poster-ebay .timing-chip strong { color: var(--charcoal-900); }
+.timing-chip span { font-size: 12px; opacity: 0.75; }
+
+.poster-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poster-visual .icon-circle {
+  width: 220px; height: 220px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.poster-visual svg { width: 96px; height: 96px; }
+
+@media (max-width: 860px) {
+  .poster { grid-template-columns: 1fr; padding: var(--space-6); text-align: center; }
+  .poster-list div, .poster-timing { justify-content: center; }
+  .poster-visual { order: -1; }
+  .poster-visual .icon-circle { width: 160px; height: 160px; }
+  .poster-visual svg { width: 68px; height: 68px; }
+}
+
+/* ---------- Curriculum detail (learn list, prerequisites, day-by-day) ---------- */
+.curriculum-block {
+  margin-top: var(--space-7);
+  padding-top: var(--space-7);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.poster-ebay .curriculum-block { border-top-color: var(--gray-200); }
+
+.curriculum-block h3 {
+  font-size: 18px;
+  margin-bottom: var(--space-4);
+}
+.poster-tiktok .curriculum-block h3 { color: var(--white); }
+
+.learn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3) var(--space-5);
+}
+.learn-grid div { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
+.learn-grid svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.poster-tiktok .learn-grid { color: rgba(255, 255, 255, 0.85); }
+.poster-tiktok .learn-grid svg { color: #5eead4; }
+.poster-ebay .learn-grid { color: var(--charcoal-700); }
+.poster-ebay .learn-grid svg { color: var(--ebay-accent); }
+
+.prereq-note {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-6);
+  font-size: 14px;
+}
+.prereq-note svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+.prereq-note.on-dark { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.85); }
+.prereq-note.on-dark svg { color: #5eead4; }
+.prereq-note.on-dark strong { color: var(--white); }
+.prereq-note.on-light { background: #fff6e5; border: 1px solid #f0d9a8; color: var(--charcoal-700); }
+.prereq-note.on-light svg { color: var(--amazon-accent); }
+.prereq-note.on-light strong { color: var(--charcoal-900); }
+
+.availability-row {
+  margin-top: var(--space-5);
+  font-size: 14px;
+}
+.poster-tiktok .availability-row { color: rgba(255, 255, 255, 0.7); }
+.poster-ebay .availability-row { color: var(--charcoal-700); }
+
+.class-stats {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.class-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal-900);
+}
+.class-stat svg { width: 18px; height: 18px; color: var(--ebay-accent); }
+
+.week-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.week-label {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ebay-accent);
+  background: #eef3ff;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
+.day-row {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--gray-100);
+  text-align: left;
+}
+.day-row:last-child { border-bottom: none; }
+
+.day-badge {
+  flex-shrink: 0;
+  min-width: 52px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  background: var(--ebay-accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-row > div strong { display: block; font-size: 14px; color: var(--charcoal-900); }
+.day-row > div span { font-size: 13px; color: var(--charcoal-700); }
+
+@media (max-width: 860px) {
+  .learn-grid { grid-template-columns: 1fr; }
+  .week-columns { grid-template-columns: 1fr; }
+}
+
+/* ---------- Amazon coming soon ---------- */
+.amazon-section {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #fff8ec, #fffefb);
+  border: 1px dashed #f0d9a8;
+  padding: var(--space-8);
+  text-align: center;
+}
+.amazon-section .poster-icon { margin: 0 auto var(--space-5); }
+
+/* ---------- Consultation ---------- */
+.consultation-card {
+  background: var(--gradient-brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-7);
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.price-badge {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+}
+.price-badge .amount { font-size: 32px; font-weight: 700; }
+.price-badge .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+
+.consultation-copy h2 { color: var(--white); font-size: 26px; }
+.consultation-copy p { color: rgba(255, 255, 255, 0.9); margin-bottom: 0; max-width: 480px; }
+
+@media (max-width: 860px) {
+  .consultation-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.payment-fee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--brand-100);
+}
+.fee-course { font-size: 14px; color: var(--charcoal-900); font-weight: 600; }
+.fee-amount { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--brand-600); }
+
+.payment-note { font-size: 14px; color: var(--charcoal-700); margin-bottom: var(--space-5); }
+
+.payment-methods { display: flex; flex-direction: column; gap: var(--space-4); }
+.payment-method { display: flex; align-items: flex-start; gap: var(--space-3); }
+.payment-method svg { width: 22px; height: 22px; color: var(--brand-500); flex-shrink: 0; margin-top: 2px; }
+.payment-method strong { display: block; color: var(--charcoal-900); font-size: 15px; }
+.payment-method span { font-size: 14px; color: var(--charcoal-700); }
+
+/* ---------- About ---------- */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+.about-copy p { color: var(--charcoal-700); font-size: 16px; }
+.about-points { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-5); }
+.about-points div { display: flex; align-items: flex-start; gap: var(--space-3); }
+.about-points .icon-badge { width: 34px; height: 34px; border-radius: 50%; background: var(--brand-100); color: var(--brand-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.about-points svg { width: 16px; height: 16px; }
+.about-points strong { display: block; color: var(--charcoal-900); font-size: 15px; }
+.about-points span { font-size: 14px; color: var(--charcoal-700); }
+
+.about-visual { display: flex; align-items: center; justify-content: center; }
+.about-visual .icon-circle { width: 280px; height: 280px; border-radius: 50%; background: var(--brand-100); display: flex; align-items: center; justify-content: center; }
+.about-visual svg { width: 120px; height: 120px; color: var(--brand-500); }
+
+@media (max-width: 860px) {
+  .about-wrap { grid-template-columns: 1fr; text-align: center; }
+  .about-points div { text-align: left; }
+  .about-visual { order: -1; }
+  .about-visual .icon-circle { width: 200px; height: 200px; }
+  .about-visual svg { width: 84px; height: 84px; }
+}
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-6); }
+
+.contact-card {
+  padding: var(--space-7);
+  text-align: center;
+  min-width: 0; /* let the grid track shrink below the email handle's intrinsic width */
+}
+.contact-card .icon-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-5); }
+.contact-card .icon-circle svg { width: 32px; height: 32px; }
+.contact-card h3 { font-size: 20px; }
+.contact-card p { color: var(--charcoal-700); font-size: 15px; }
+.contact-card .handle {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--charcoal-900);
+  font-size: 16px;
+  margin-bottom: var(--space-4);
+  overflow-wrap: anywhere; /* the email address has no spaces to wrap on */
+}
+
+@media (max-width: 980px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
