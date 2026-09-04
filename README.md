@@ -47,6 +47,7 @@ Click the blue bubble bottom-right. It's a scripted FAQ assistant, not an LLM â€
 - WhatsApp: `https://wa.me/447356031478` (used throughout, including chatbot actions, with context-specific prefilled messages)
 - Facebook: `https://www.facebook.com/profile.php?id=61592904440674`
 - Email: `scalexlimiteduk@gmail.com`
+- Enrolment form (separate Claude Artifact, not in this repo): `https://claude.ai/code/artifact/c5b46992-a922-4f4b-b652-7e773d02c559` â€” see `CLAUDE.md` for what it is and how to update it
 
 ## Notes / things to revisit
 
