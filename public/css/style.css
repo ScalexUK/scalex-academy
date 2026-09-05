@@ -1,32 +1,43 @@
 /* =========================================================
    ScaleX Academy UK — Design System
-   Matches the client's real logo: deep navy with a blue
-   gradient "X" mark. Dark navy header/hero/footer, blue
-   accent on white content sections in between. Rounded
-   cards, generous spacing, soft shadows.
+   "Midnight Teal & Amber": deep teal-navy header/hero/footer
+   (still logo-compatible — the badge reads as navy regardless
+   of hue) with a teal gradient as the primary accent, and a
+   warm amber reserved specifically for money — course fees,
+   the £30 price badge — so color carries meaning rather than
+   just decoration. eBay's own accent stays a distinct blue,
+   which was always a deliberate second color differentiating
+   the eBay poster from TikTok's (already teal-mint) one.
    Tokens here drive every component — change values, not
    individual rules, when adjusting the look.
    ========================================================= */
 
 :root {
-  /* Brand colors — blue gradient accent, matching the logo's X mark */
-  --brand-600: #1e6fe0;
-  --brand-500: #2f8fff;
-  --brand-400: #5ab8ff;
-  --brand-100: #e4f1ff;
+  /* Brand colors — teal gradient accent */
+  --brand-600: #0a7d73;
+  --brand-500: #14b8a6;
+  --brand-400: #5eead4;
+  --brand-100: #dcf5f1;
 
-  /* Navy — matches the logo's badge background; used for header/hero/footer */
-  --navy-950: #05070f;
-  --navy-900: #0a0f1e;
-  --navy-800: #101a30;
-  --navy-700: #182548;
+  /* Navy — deep teal-navy; used for header/hero/footer */
+  --navy-950: #03100f;
+  --navy-900: #06181a;
+  --navy-800: #082021;
+  --navy-700: #0d2b2c;
+
+  /* Amber — used only for money (course fees, the £30 badge), never as a
+     general accent, so it stays meaningful instead of decorative. */
+  --amber-600: #b8791f;
+  --amber-500: #eaa94c;
+  --amber-400: #f5c179;
+  --gradient-amber: linear-gradient(135deg, #f2b25c, var(--amber-600));
 
   --charcoal-900: #222b35;
   --charcoal-700: #4a5568;
   --charcoal-500: #717d8a;
 
   --white: #ffffff;
-  --gray-50: #f8f9fb;
+  --gray-50: #f5f9f8;
   --gray-100: #f1f3f6;
   --gray-200: #e4e8ed;
   --gray-300: #d3d9e0;

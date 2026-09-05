@@ -131,6 +131,8 @@
 .training-meta div { display: flex; align-items: center; gap: var(--space-2); }
 .training-meta svg { width: 16px; height: 16px; color: var(--brand-500); flex-shrink: 0; }
 .training-meta strong { color: var(--charcoal-900); }
+.training-meta .fee-row strong { color: var(--amber-600); }
+.training-meta .fee-row svg { color: var(--amber-500); }
 
 .training-card .btn { margin-top: auto; }
 
@@ -200,6 +202,13 @@
 .poster-tiktok .timing-chip strong { color: var(--white); }
 .poster-ebay .timing-chip strong { color: var(--charcoal-900); }
 .timing-chip span { font-size: 12px; opacity: 0.75; }
+
+/* The fee chip is money, not a time — call it out in amber rather than
+   blending in with the two session-time chips next to it. */
+.timing-chip.fee-chip { background: rgba(242, 178, 92, 0.14); border-color: rgba(242, 178, 92, 0.35); }
+.timing-chip.fee-chip strong { color: var(--amber-500); }
+.poster-ebay .timing-chip.fee-chip { background: #fdf3e4; border-color: #f0d9a8; }
+.poster-ebay .timing-chip.fee-chip strong { color: var(--amber-600); }
 
 .poster-visual {
   display: flex;
@@ -371,7 +380,7 @@
   font-family: var(--font-heading);
   flex-shrink: 0;
 }
-.price-badge .amount { font-size: 32px; font-weight: 700; }
+.price-badge .amount { font-size: 32px; font-weight: 700; color: var(--amber-400); }
 .price-badge .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
 
 .consultation-copy h2 { color: var(--white); font-size: 26px; }
@@ -396,7 +405,7 @@
   background: var(--brand-100);
 }
 .fee-course { font-size: 14px; color: var(--charcoal-900); font-weight: 600; }
-.fee-amount { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--brand-600); }
+.fee-amount { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--amber-600); }
 
 .payment-note { font-size: 14px; color: var(--charcoal-700); margin-bottom: var(--space-5); }
 
