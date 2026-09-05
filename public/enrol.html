@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrol — ScaleX Academy UK</title>
+<meta name="description" content="Enrol in ScaleX Academy UK's live online TikTok Seller Centre or eBay training. Pick your course, batch and session, and we'll confirm your place on WhatsApp.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/enrol.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img class="logo-mark" src="assets/logo.png" alt="ScaleX Academy UK">
+      <span class="logo-text">Scale<span>X</span><small>ACADEMY UK</small></span>
+    </a>
+    <div class="header-actions">
+      <a href="index.html" class="btn btn-outline-light btn-sm">Back to Site</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="enrol-hero">
+    <div class="container">
+      <span class="eyebrow">Online Enrolment</span>
+      <h1>Enrol in Your Training</h1>
+      <p>Fill in the form below to reserve your place. We'll confirm your enrolment and payment details with you directly on WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="enrol-body">
+    <div class="container enrol-container">
+
+      <!-- Live summary -->
+      <div class="card summary-card" id="summary-card">
+        <span class="eyebrow">Your Selection</span>
+        <div class="summary-grid">
+          <div><span class="s-label">Course</span><strong id="sum-course">TikTok Seller Centre</strong></div>
+          <div><span class="s-label">Batch starts</span><strong id="sum-batch">16 September 2026</strong></div>
+          <div><span class="s-label">Session</span><strong id="sum-session">Not selected</strong></div>
+          <div><span class="s-label">Duration</span><strong>2 weeks</strong></div>
+          <div><span class="s-label">Course fee</span><strong id="sum-fee">£120</strong></div>
+        </div>
+        <p class="summary-note">Monday to Friday, 1 hour daily &middot; Saturday Q&amp;A session</p>
+      </div>
+
+      <form id="enrol-form" novalidate>
+
+        <!-- Course -->
+        <div class="card form-card">
+          <h2>1. Choose Your Course</h2>
+
+          <div class="field" id="f_course">
+            <label class="field-label">Course <span class="req">*</span></label>
+            <div class="opt-group" id="course-group">
+              <label class="opt checked">
+                <input type="radio" name="course" value="tiktok" checked>
+                <span class="opt-title">TikTok Seller Centre</span>
+                <span class="opt-sub">£120 &middot; 2 weeks</span>
+              </label>
+              <label class="opt">
+                <input type="radio" name="course" value="ebay">
+                <span class="opt-title">eBay Training</span>
+                <span class="opt-sub">£120 &middot; 2 weeks</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field" id="f_batch">
+            <label class="field-label">Batch start date <span class="req">*</span></label>
+            <div class="opt-group" id="batch-group"></div>
+            <div class="error-text">Please choose a batch.</div>
+          </div>
+
+          <div class="field" id="f_session">
+            <label class="field-label">Session <span class="req">*</span></label>
+            <div class="opt-group" id="session-group"></div>
+            <div class="error-text">Please choose a session.</div>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="card form-card">
+          <h2>2. Your Details</h2>
+
+          <div class="field" id="f_name">
+            <label class="field-label" for="full_name">Full name <span class="req">*</span></label>
+            <input type="text" id="full_name" autocomplete="name" placeholder="e.g. Sarah Ahmed">
+            <div class="error-text">Please enter your full name.</div>
+          </div>
+
+          <div class="field" id="f_email">
+            <label class="field-label" for="email">Email address <span class="req">*</span></label>
+            <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@example.com">
+            <div class="error-text">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field" id="f_whatsapp">
+            <label class="field-label" for="wa_number">WhatsApp number <span class="req">*</span></label>
+            <div class="wa-row">
+              <select id="wa_code" aria-label="Country dialling code">
+                <option value="+44" selected>United Kingdom (+44)</option>
+                <option value="+92">Pakistan (+92)</option>
+                <option value="+1">USA / Canada (+1)</option>
+                <option value="+971">United Arab Emirates (+971)</option>
+                <option value="+966">Saudi Arabia (+966)</option>
+                <option value="+91">India (+91)</option>
+                <option value="+880">Bangladesh (+880)</option>
+                <option value="other">Other (type code)</option>
+              </select>
+              <input type="text" id="wa_code_custom" class="hidden" placeholder="+00" aria-label="Custom dialling code">
+              <input type="tel" id="wa_number" inputmode="tel" autocomplete="tel" placeholder="7356 031478">
+            </div>
+            <div class="error-text">Please enter a valid WhatsApp number.</div>
+            <p class="help-text">We use WhatsApp for class links, reminders and payment details, so please double-check this.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="f_country">
+              <label class="field-label" for="country">Country <span class="req">*</span></label>
+              <input type="text" id="country" autocomplete="country-name" placeholder="United Kingdom">
+              <div class="error-text">Required.</div>
+            </div>
+            <div class="field" id="f_city">
+              <label class="field-label" for="city">City <span class="req">*</span></label>
+              <input type="text" id="city" autocomplete="address-level2" placeholder="London">
+              <div class="error-text">Required.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="alt_phone">Alternative phone number <span class="optional">(optional)</span></label>
+            <input type="tel" id="alt_phone" inputmode="tel">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="notes">Anything else you'd like us to know? <span class="optional">(optional)</span></label>
+            <textarea id="notes" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div class="card form-card">
+          <h2>3. Payment</h2>
+
+          <div class="fee-box">
+            <strong>Course fee: <span id="fee-amount">£120</span></strong>
+            <span>Payment is by bank transfer, arranged with you directly on WhatsApp. The £30 account creation consultation is a separate fee and isn't deducted from this.</span>
+          </div>
+
+          <div class="field">
+            <label class="field-label">Have you already paid?</label>
+            <div class="opt-group opt-group-inline" id="paid-group">
+              <label class="opt"><input type="radio" name="paid" value="Yes"><span class="opt-title">Yes</span></label>
+              <label class="opt"><input type="radio" name="paid" value="Partially"><span class="opt-title">Partially</span></label>
+              <label class="opt checked"><input type="radio" name="paid" value="No" checked><span class="opt-title">Not yet</span></label>
+            </div>
+          </div>
+
+          <div id="paid-details" class="hidden">
+            <div class="field-row">
+              <div class="field">
+                <label class="field-label" for="paid_amount">Amount paid (£)</label>
+                <input type="number" id="paid_amount" step="0.01" min="0">
+              </div>
+              <div class="field">
+                <label class="field-label" for="paid_date">Payment date</label>
+                <input type="date" id="paid_date">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label class="field-label" for="paid_method">Payment method</label>
+                <select id="paid_method">
+                  <option>Bank Transfer</option>
+                  <option>Cash</option>
+                  <option>Card</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="paid_ref">Payment reference <span class="optional">(optional)</span></label>
+                <input type="text" id="paid_ref">
+              </div>
+            </div>
+            <p class="help-text">This is a declaration only — ScaleX Academy UK will verify and record your payment.</p>
+          </div>
+        </div>
+
+        <!-- Confirm -->
+        <div class="card form-card">
+          <h2>4. Confirm &amp; Send</h2>
+
+          <label class="check-field" id="f_consent1">
+            <input type="checkbox" id="consent_correct">
+            <span>I confirm the information I've provided is correct.</span>
+          </label>
+          <label class="check-field" id="f_consent2">
+            <input type="checkbox" id="consent_use">
+            <span>I agree that ScaleX Academy UK may use my details for course enrolment, training communication, attendance and academy administration.</span>
+          </label>
+
+          <div id="form-error" class="form-error hidden"></div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.3-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C11.6 9.3 11.1 8 10.9 7.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.5c1.4.8 3 1.2 4.6 1.2h.5c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2h-.5c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1 1 1-3-.2-.3C4 15.3 3.5 13.7 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.7-8.5 8.7z"/></svg>
+            Send Enrolment on WhatsApp
+          </button>
+          <p class="help-text center">Your details are put into a WhatsApp message for you to send — nothing is stored on this page.</p>
+        </div>
+      </form>
+
+      <!-- Success -->
+      <div class="card success-card hidden" id="success-card">
+        <div class="success-tick">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h2>Almost done — send your message</h2>
+        <p>WhatsApp should have opened with your enrolment details ready to send. <strong>Tap send in WhatsApp</strong> to complete your enrolment.</p>
+
+        <div class="ref-box">
+          <span class="s-label">Your reference</span>
+          <strong id="ref-code">—</strong>
+        </div>
+
+        <table class="recap" id="recap"></table>
+
+        <a href="#" id="wa-again" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.3-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C11.6 9.3 11.1 8 10.9 7.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.5c1.4.8 3 1.2 4.6 1.2h.5c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2h-.5c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1 1 1-3-.2-.3C4 15.3 3.5 13.7 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.7-8.5 8.7z"/></svg>
+          Didn't open? Tap here
+        </a>
+        <button type="button" class="btn btn-outline btn-block" id="copy-btn">Copy details instead</button>
+        <p class="help-text center">Or email them to <a href="mailto:scalexlimiteduk@gmail.com">scalexlimiteduk@gmail.com</a></p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; justify-content:center; text-align:center;">
+      <span>&copy; <span data-year></span> ScaleX Academy UK &middot; Suite RA01, 195-197 Wood Street, London, E17 3NU, UK</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enrol.js"></script>
+</body>
+</html>

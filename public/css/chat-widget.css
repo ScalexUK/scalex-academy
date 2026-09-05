@@ -145,6 +145,15 @@
 }
 .quick-reply.is-facebook:hover { opacity: 0.9; }
 
+/* Actions that go to a page on this site (e.g. the enrolment form) — brand
+   blue, so they read as "go somewhere" rather than "open WhatsApp". */
+.quick-reply.is-primary {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: #fff;
+}
+.quick-reply.is-primary:hover { opacity: 0.92; background: var(--gradient-brand); }
+
 .chat-form {
   display: flex;
   border-top: 1px solid var(--gray-100);

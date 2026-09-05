@@ -1,0 +1,192 @@
+/* =========================================================
+   Enrolment page (enrol.html)
+   Uses the shared design tokens from style.css — this file
+   only adds the form-specific pieces the marketing page
+   doesn't need.
+   ========================================================= */
+
+.enrol-hero {
+  background: var(--gradient-navy);
+  padding: var(--space-8) 0 var(--space-7);
+  text-align: center;
+}
+.enrol-hero h1 { color: var(--white); font-size: clamp(28px, 4vw, 40px); }
+.enrol-hero p { color: var(--gray-200); max-width: 560px; margin: 0 auto; }
+
+.enrol-body { padding: var(--space-7) 0 var(--space-9); background: var(--gray-50); }
+.enrol-container { max-width: 720px; }
+
+/* ---------- Live summary ---------- */
+.summary-card { padding: var(--space-6); margin-bottom: var(--space-5); }
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-4);
+}
+.summary-grid > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.s-label { font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--charcoal-500); }
+.summary-grid strong { font-family: var(--font-heading); font-size: 15px; color: var(--charcoal-900); }
+.summary-note { font-size: 13px; color: var(--charcoal-700); margin: var(--space-4) 0 0; }
+
+/* ---------- Form cards ---------- */
+.form-card { padding: var(--space-6); margin-bottom: var(--space-5); }
+.form-card h2 {
+  font-size: 18px;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.field { margin-bottom: var(--space-5); }
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal-900);
+  margin-bottom: var(--space-2);
+}
+.req { color: #d92d20; }
+.optional { font-weight: 400; color: var(--charcoal-500); }
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="number"],
+.field input[type="date"],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  /* 16px keeps iOS Safari from zooming the page on focus */
+  font-size: 16px;
+  font-family: var(--font-body);
+  color: var(--charcoal-900);
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s ease;
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--brand-500);
+}
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (max-width: 560px) { .field-row { grid-template-columns: 1fr; gap: 0; } }
+
+.wa-row { display: flex; gap: var(--space-2); }
+.wa-row select { flex: 0 0 auto; width: auto; max-width: 190px; }
+.wa-row input[type="tel"] { flex: 1; min-width: 0; }
+#wa_code_custom { flex: 0 0 84px; }
+
+.help-text { font-size: 13px; color: var(--charcoal-700); margin: var(--space-2) 0 0; }
+.help-text.center { text-align: center; }
+
+/* ---------- Radio option cards ---------- */
+.opt-group { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.opt-group-inline { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 560px) { .opt-group { grid-template-columns: 1fr; } }
+
+.opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-4);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.opt:hover { border-color: var(--brand-400); }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt-title { font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; color: var(--charcoal-900); }
+.opt-sub { font-size: 13px; color: var(--charcoal-700); }
+.opt.checked { border-color: var(--brand-500); background: var(--brand-100); }
+.opt.checked .opt-title { color: var(--brand-600); }
+
+/* Keyboard focus needs a visible ring since the real radio is hidden */
+.opt:focus-within { outline: 2px solid var(--brand-500); outline-offset: 2px; }
+
+/* ---------- Payment ---------- */
+.fee-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--brand-100);
+  margin-bottom: var(--space-5);
+}
+.fee-box strong { font-family: var(--font-heading); font-size: 17px; color: var(--brand-600); }
+.fee-box span { font-size: 13.5px; color: var(--charcoal-700); }
+
+/* ---------- Consents ---------- */
+.check-field {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+  cursor: pointer;
+}
+.check-field input { width: 20px; height: 20px; flex-shrink: 0; margin: 2px 0 0; accent-color: var(--brand-600); }
+.check-field span { font-size: 14px; color: var(--charcoal-700); line-height: 1.55; }
+.check-field.has-error span { color: #d92d20; }
+
+/* ---------- Errors ---------- */
+.error-text { display: none; font-size: 13px; color: #d92d20; margin-top: var(--space-2); }
+.field.has-error .error-text { display: block; }
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea { border-color: #d92d20; }
+.field.has-error .opt { border-color: #d92d20; }
+
+.form-error {
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  font-size: 14px;
+  margin-bottom: var(--space-4);
+}
+
+.btn-lg { padding: 16px 28px; font-size: 16px; }
+
+/* ---------- Success ---------- */
+.success-card { padding: var(--space-7) var(--space-6); text-align: center; }
+.success-tick {
+  width: 64px; height: 64px;
+  margin: 0 auto var(--space-5);
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-600);
+  display: flex; align-items: center; justify-content: center;
+}
+.success-tick svg { width: 30px; height: 30px; }
+.success-card p { color: var(--charcoal-700); }
+
+.ref-box {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  border: 1px dashed var(--gray-300);
+  margin-bottom: var(--space-5);
+}
+.ref-box strong { font-family: var(--font-heading); font-size: 20px; color: var(--charcoal-900); letter-spacing: 0.04em; }
+
+.recap { width: 100%; border-collapse: collapse; text-align: left; margin-bottom: var(--space-6); }
+.recap td { padding: 10px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; }
+.recap td:first-child { color: var(--charcoal-500); width: 45%; }
+.recap td:last-child { color: var(--charcoal-900); font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+
+.success-card .btn { margin-bottom: var(--space-3); }
+
+.hidden { display: none !important; }

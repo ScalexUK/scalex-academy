@@ -48,16 +48,30 @@ Added as the final piece of Step 2, once the client supplied real figures — no
 - **No live payment link/checkout** (Stripe Payment Link, PayPal, etc.) — client said not ready yet. If one is added later, wire it into the same `.payment-info` block and update the chatbot's `price` topic action.
 - **Chatbot:** the `price` topic in `chat-widget.js` now states both course fees, the consultation-is-separate clarification, and the bank-transfer/WhatsApp payment method, with keywords expanded to catch `payment`, `pay`, `bank transfer`, `bank details` (in addition to `price`, `cost`, `fee`, `how much`, `pricing`). Its action button is now "Ask About Payment" instead of the previous generic "Ask About Pricing".
 
-## Enrolment form (separate Claude Artifact, not part of this codebase)
+## Enrolment form — `public/enrol.html` (the live one)
 
-Live at `https://claude.ai/code/artifact/c5b46992-a922-4f4b-b652-7e773d02c559`. This is a **self-contained Claude Artifact**, not a file in this repo — it's a single HTML document with its own inline JS that renders a full online enrolment form (course/batch picker, name/email/WhatsApp/country/city, session choice, a payment-declaration section, consent checkboxes) and uses the Artifact `db`-less `artifact.publish()` capability to save each completed submission as a new version of itself (falling back to a prefilled WhatsApp message if publishing fails). It was built in an earlier, separate session — this session found it already existing and wired it into the live site on request, after reviewing and fixing it:
+**The enrolment form is a real page in this repo: `public/enrol.html` + `css/enrol.css` + `js/enrol.js`.** It replaced the Claude Artifact version described below, which was broken in production.
+
+**Why it was replaced (important, don't undo this):** the Artifact URL is a **private** claude.ai link — only the account owner, while logged in, can open it. When it was wired into the live site, every public visitor clicking "Enrol Now" / "Join TikTok Training" / "Join eBay Training" got a blank page. Never link a claude.ai artifact URL from the public site; anything visitors need must be a real file under `public/`.
+
+How the real page works:
+
+- **Same content as the Artifact version**: course picker (TikTok Seller Centre / eBay), batch picker, session picker, name/email/WhatsApp/country/city/alt-phone/notes, payment declaration, two consent checkboxes.
+- **Session times switch with the course** (TikTok 10:00–11:00 / 20:00–21:00, eBay 11:00–12:00 / 21:00–22:00), and so do the batch numbers (TikTok batches 6/7/8, eBay 2/3/4). Data lives in the `COURSES` object at the top of `js/enrol.js`.
+- **Submission goes to WhatsApp**, not a server: on submit it builds a formatted enrolment message (reference code, course, batch, session, fee, student details, payment declaration, notes) and opens `wa.me/447356031478` prefilled with it. This keeps the site fully static (no backend on Vercel) and matches the WhatsApp-first design of the rest of the site. The success screen shows the reference, a recap table, a "didn't open? tap here" fallback link, and a copy-to-clipboard button.
+- **Nothing is stored anywhere** — the page says so explicitly. If real submission storage is ever wanted, that needs a backend or a form service, which the client hasn't asked for.
+- **Batch dates (16 Sep 2026, 1 Oct 2026, 16 Oct 2026) are real and client-confirmed.** This is the deliberate exception to the main site's "no specific dates, only the 1st & 15th cadence" rule: `index.html` is marketing copy, `enrol.html` is an operational tool where real dates are the point. Don't strip them here, and don't copy them into `index.html`.
+- **Linked from four places in `index.html`**: header `Enrol Now`, hero `Enrol Now`, and both posters' `Join TikTok Training` / `Join eBay Training`. All are `btn-primary` (blue), not `btn-whatsapp` — WhatsApp-green stays reserved for links that actually open WhatsApp.
+- The chatbot's `tiktok`, `ebay` and `enrol` topics also link here via the new `link` action type.
+
+### The old Claude Artifact version (superseded, no longer linked)
+
+Still exists at `https://claude.ai/code/artifact/c5b46992-a922-4f4b-b652-7e773d02c559` as a private page. It's **not referenced by the site any more** — keep it or delete it, it makes no difference to the website. It was a **self-contained Claude Artifact**, not a file in this repo — it's a single HTML document with its own inline JS that renders a full online enrolment form (course/batch picker, name/email/WhatsApp/country/city, session choice, a payment-declaration section, consent checkboxes) and uses the Artifact `db`-less `artifact.publish()` capability to save each completed submission as a new version of itself (falling back to a prefilled WhatsApp message if publishing fails). It was built in an earlier, separate session — this session found it already existing and wired it into the live site on request, after reviewing and fixing it:
 
 - **Fixed:** the form's `ACADEMY_WHATSAPP` constant was still the literal placeholder `"__ACADEMY_WHATSAPP__"` (never filled in), which would have broken both the "couldn't submit — message us on WhatsApp instead" fallback and the post-submission WhatsApp confirmation button. Set to `447356031478` to match the rest of the site, then republished to the same artifact URL.
 - **Confirmed with client, left as-is:** the form's address ("Suite RA01, 195-197 Wood Street, London, E17 3NU, United Kingdom") is correct — this session updated the main site's footer and this doc to match it (see "Business facts" above), since the site previously said the wrong "Oldham, Manchester, UK".
 - **Confirmed with client, left as-is:** the form's three hardcoded batch start dates (16 Sep 2026, 1 Oct 2026, 16 Oct 2026, for both TikTok Seller Centre and eBay) are real confirmed batches — client-approved. This is a deliberate exception to the main site's "no specific dates, only 1st & 15th cadence" rule: the main `index.html` is marketing copy that shouldn't imply fixed one-off dates, but this form is an operational enrolment tool where real dates are exactly what's needed. Don't "fix" this by stripping the dates — it's intentional, and don't copy real dates from here back into `index.html` either, since that would violate the main site's own no-invented-dates rule for different reasons (marketing page vs. operational form).
-- **Wired into `index.html`** in three places, replacing/supplementing WhatsApp CTAs per client instruction: the hero (`Enrol Now`, a new `btn-primary`, placed before the existing `Join Us on WhatsApp` button), the header (`Enrol Now`, `btn-primary btn-sm`, hidden below 460px to avoid crowding the WhatsApp icon + nav toggle), and both poster sections' `Join TikTok Training` / `Join eBay Training` buttons — those used to open a prefilled WhatsApp chat and now link directly to the enrolment form instead (restyled from `btn-whatsapp` to `btn-primary` and the WhatsApp icon removed, since per the design-system rule WhatsApp-green is reserved for actual WhatsApp destinations).
-- **Not changed:** the chatbot's `tiktok`/`ebay` topic actions (also labeled "Join TikTok Training" / "Join eBay Training") still open WhatsApp rather than the enrolment form — only the two literal on-page poster buttons were in scope for this swap. The Payment Information section's "Ask About Payment" WhatsApp CTA was also left alone (client chose not to touch that one).
-- **Maintenance note:** because this lives outside the repo as a separate Artifact, updating it requires the Artifact tool with `url` set to the same link (not a normal file edit) — a future session touching course fees, dates, or copy on the form needs to fetch/read that URL first, edit, and republish to the same URL to avoid creating a second, disconnected artifact.
+- Its `ACADEMY_WHATSAPP` placeholder was fixed and it was republished before the private-link problem was discovered — that work is now moot, but the artifact is left in a working state.
 
 ## Design system — navy/blue, matching the real logo
 
@@ -77,32 +91,50 @@ Originally built to an Airbnb-inspired coral concept (see "History" below), then
 server.js                 Zero-dependency Node http server: serves public/, handles POST /api/leads
 leads.json                 Created automatically; not currently used (chatbot routes to WhatsApp, not this)
 Scalex logo.jpeg           Client-supplied real logo (source asset — not served directly, see assets/logo.png)
+vercel.json                Static-deploy config: framework null, no build, serve public/
+.vercelignore              Keeps server.js out of Vercel builds (see "Deployment" below)
 public/
-  index.html               The entire site — hero, training overview, TikTok poster, eBay poster,
+  index.html               The entire marketing site — hero, training overview, TikTok poster, eBay poster,
                             Amazon coming-soon, consultation + payment information, about, contact, footer, chatbot widget
+  enrol.html               Online enrolment form (real page, submits via WhatsApp) — see below
   assets/
     logo.png                 Real logo, alpha-masked to a transparent circle — used site-wide (header, hero, footer, chatbot)
   css/
     style.css               Design system tokens (navy/blue brand palette), reset, header/nav/footer, buttons, cards
     home.css                 Section styles: hero, training cards, posters, consultation, payment info, about, contact
-    chat-widget.css          Chatbot widget styling (blue brand header, WhatsApp-green action buttons)
+    enrol.css                Enrolment form styles (fields, radio "cards", success screen)
+    chat-widget.css          Chatbot widget styling (blue brand header, WhatsApp-green + brand-blue action buttons)
   js/
     main.js                  Mobile nav toggle, scroll-position-based active-nav-link highlighting,
                             reveal-on-scroll (IntersectionObserver), footer year
+    enrol.js                 Enrolment form: course/batch/session data, validation, WhatsApp message build
     chat-widget.js            Chatbot logic — see below
 ```
+
+## Deployment (Vercel, static)
+
+Hosted on Vercel, deployed from GitHub (`ScalexUK/scalex-academy`, branch `main`) — every push auto-deploys. It is served as a **pure static site**; `server.js` is not used in production.
+
+Two deployment bugs were hit and fixed, both caused by Vercel trying to treat this as a Node server app:
+
+1. **`FUNCTION_INVOCATION_FAILED`** — Vercel found `server.js` at the repo root and ran it as a serverless function. It's written for a persistent process (`http.createServer(...).listen()`), which crashes under serverless invocation. Fixed by adding `.vercelignore` with `server.js`.
+2. **`No entrypoint found in /vercel/path0`** — with `server.js` now excluded, Vercel's auto-detected *Node.js* framework preset had no entrypoint to run. Fixed by pinning `vercel.json` to `{"framework": null, "buildCommand": null, "outputDirectory": "public"}`, which disables framework detection entirely and serves `public/` as static files.
+
+If a future change makes Vercel try to build/run something, check those two settings first. Note the Vercel MCP connector was unreliable throughout this project (contradictory 404/409/403 responses, projects reported created but not listable) — the dashboard UI is the reliable path for project-level operations.
 
 ## The chatbot ("ScaleX Assistant")
 
 A rule-based FAQ/router bot, not an LLM — no API key, no server-side call, fully client-side in `public/js/chat-widget.js`. This was a deliberate choice: "automated answers about training dates and schedules" reads as a scripted assistant, and the whole site's philosophy is WhatsApp-first for anything needing a real human (payment, enrollment, actual booking) — the bot's job is to answer FAQs fast and then hand off to WhatsApp, not to replace WhatsApp as the lead channel. It does **not** write to `leads.json` — that would fragment leads across two systems when the client already checks WhatsApp.
 
 **How it works:**
-- On open, greets and shows a quick-reply menu: TikTok Mastery, eBay Training, Amazon Training, £30 Consultation.
+- On open, greets and shows a quick-reply menu: TikTok Mastery, eBay Training, Amazon Training, £30 Consultation, How to Enrol, Class Times, Fees & Payment.
 - Each topic has a `TOPICS` entry (keywords, a canned reply, and an optional `action` — a WhatsApp deep link with a prefilled, intent-specific message, e.g. "Hi, I'd like to join the TikTok Mastery Training.").
 - Free-text input is matched by substring against each topic's `keywords` array, checked in a fixed priority order (`TOPIC_ORDER`) so a more specific topic (e.g. "consultation") wins over a more generic one (e.g. "price") when a message could match both.
-- Extra topics beyond the main menu: `schedule` (general timing questions), `price` (cost questions not specifically about the consultation), `human` (wants a person), `facebook` (social).
-- Unmatched input gets an honest fallback ("I'm not sure about that one...") plus the main menu again — no guessing/inventing an answer.
-- Action buttons: WhatsApp ones are styled WhatsApp-green and call `window.open(waLink, '_blank', 'noopener')`; the Facebook one opens the Facebook profile URL directly. After any action, the bot shows a "did it open?" fallback line (buttons/popups can be blocked) and resets to the main menu.
+- **15 topics total.** Menu topics: `tiktok`, `ebay`, `amazon`, `consultation`, `enrol`, `schedule`, `price`. Free-text-only topics: `curriculum` (what you'll learn), `requirements` (what you need before starting), `format` (live vs recorded), `location` (where we are / joining from abroad / timezones), `certificate`, `refund` (also covers missed classes), `human`, `facebook`.
+- **Honest-by-design on unconfirmed facts.** `certificate` and `refund` deliberately say "I don't have confirmed details, I don't want to guess" and hand off to WhatsApp, because the client has never confirmed a certificate or refund policy. Do **not** replace these with invented answers — if the client confirms a real policy later, put the real wording in.
+- Unmatched input gets an honest fallback ("I'm not sure about that one — I'd rather not guess…") plus the main menu again.
+- Action buttons: WhatsApp ones are styled WhatsApp-green and call `window.open(waLink, '_blank', 'noopener')`; the Facebook one opens the Facebook profile URL; `link` ones (brand blue, `.is-primary`) navigate this tab to a page on the site — used for the enrolment form. After a WhatsApp/Facebook action the bot shows a "did it open?" fallback line (popups can be blocked) and resets to the main menu.
+- **Keyword-ordering traps found in testing** (see `TOPIC_ORDER` comments): a bare `join` keyword on `enrol` swallowed "is there a joining fee" and "can I join from Pakistan", so it was removed in favour of `how to join` / `want to join`; `schedule` needed `time` as well as `timing` (substring matching is one-directional — "what time" does not contain "timing"); and `location` must sit before `enrol`/`schedule` so timezone and joining-from-abroad questions win over the looser keywords.
 
 **Known duplication to maintain:** `TOPICS` in `chat-widget.js` hand-duplicates the schedule facts that also live in `index.html`'s training cards/posters. There's no shared data source (static site, no build step) — if the schedule ever changes, update both places. If this becomes a maintenance problem, consider generating both from one JSON file at that point rather than now.
 
