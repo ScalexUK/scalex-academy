@@ -460,6 +460,31 @@
   .about-visual svg { width: 84px; height: 84px; }
 }
 
+/* ---------- Testimonials ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+.testimonial-card { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+
+.testimonial-head { display: flex; align-items: center; gap: var(--space-3); }
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 14px;
+}
+.testimonial-head strong { display: block; font-size: 15px; color: var(--charcoal-900); }
+.testimonial-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--brand-600); font-weight: 600; }
+.testimonial-badge svg { width: 12px; height: 12px; }
+
+.testimonial-text { font-size: 14.5px; color: var(--charcoal-700); line-height: 1.6; margin: 0; }
+
+.testimonial-footer { text-align: center; margin-top: var(--space-7); }
+
+@media (max-width: 980px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .testimonial-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-6); }
 
