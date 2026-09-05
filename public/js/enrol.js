@@ -13,8 +13,8 @@
       feeGbp: 120,
       durationWeeks: 2,
       sessions: [
-        { id: "Morning", label: "Morning", time: "10:00–11:00 UK" },
-        { id: "Evening", label: "Evening", time: "20:00–21:00 UK" }
+        { id: "Morning", label: "Morning", time: "10:00–11:00 UK time" },
+        { id: "Evening", label: "Evening", time: "20:00–21:00 UK time" }
       ],
       batches: [
         { date: "2026-09-16", number: 6 },
@@ -27,8 +27,8 @@
       feeGbp: 120,
       durationWeeks: 2,
       sessions: [
-        { id: "Morning", label: "Morning", time: "11:00–12:00 UK" },
-        { id: "Evening", label: "Evening", time: "21:00–22:00 UK" }
+        { id: "Morning", label: "Morning", time: "11:00–12:00 UK time" },
+        { id: "Evening", label: "Evening", time: "21:00–22:00 UK time" }
       ],
       batches: [
         { date: "2026-09-16", number: 2 },

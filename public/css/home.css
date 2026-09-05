@@ -133,6 +133,8 @@
 .training-meta strong { color: var(--charcoal-900); }
 .training-meta .fee-row strong { color: var(--amber-600); }
 .training-meta .fee-row svg { color: var(--amber-500); }
+.fee-other-link { font-size: 12px; color: var(--brand-600); text-decoration: underline; text-underline-offset: 2px; }
+.fee-other-link:hover { color: var(--brand-500); }
 
 .training-card .btn { margin-top: auto; }
 
@@ -205,10 +207,15 @@
 
 /* The fee chip is money, not a time — call it out in amber rather than
    blending in with the two session-time chips next to it. */
-.timing-chip.fee-chip { background: rgba(242, 178, 92, 0.14); border-color: rgba(242, 178, 92, 0.35); }
+.timing-chip.fee-chip { background: rgba(242, 178, 92, 0.14); border-color: rgba(242, 178, 92, 0.35); transition: transform 0.15s ease, box-shadow 0.15s ease; }
 .timing-chip.fee-chip strong { color: var(--amber-500); }
+.timing-chip.fee-chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .poster-ebay .timing-chip.fee-chip { background: #fdf3e4; border-color: #f0d9a8; }
 .poster-ebay .timing-chip.fee-chip strong { color: var(--amber-600); }
+
+.uk-time-note { margin: var(--space-3) 0 0; font-size: 12.5px; }
+.poster-tiktok .uk-time-note { color: rgba(255, 255, 255, 0.55); }
+.poster-ebay .uk-time-note { color: var(--charcoal-500); }
 
 .poster-visual {
   display: flex;
@@ -392,20 +399,31 @@
 
 .payment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-5);
 }
 .payment-fee {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: var(--space-3);
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-md);
   background: var(--brand-100);
 }
 .fee-course { font-size: 14px; color: var(--charcoal-900); font-weight: 600; }
-.fee-amount { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--amber-600); }
+
+.fee-amounts { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.fee-amount-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-right: var(--space-4);
+  border-right: 1px solid rgba(10, 125, 115, 0.18);
+}
+.fee-amount-item:last-child { border-right: none; padding-right: 0; }
+.fee-amount-item strong { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--amber-600); }
+.fee-amount-item small { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--charcoal-700); }
 
 .payment-note { font-size: 14px; color: var(--charcoal-700); margin-bottom: var(--space-5); }
 

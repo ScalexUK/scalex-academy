@@ -31,14 +31,14 @@
       keywords: ["tiktok", "tik tok", "tik-tok"],
       menuLabel: "TikTok Mastery",
       reply:
-        "TikTok Mastery Training starts on the 1st & 15th of every month. It runs for 2 weeks, Monday to Friday, 1 hour a day, plus a live Saturday Q&A.\n\nMorning session: 10:00–11:00 UK time\nEvening session: 20:00–21:00 UK time\nCourse fee: £120\n\nOne thing to know: you'll need your own TikTok Seller account set up before the course starts — we can help you with that if you need it.",
+        "TikTok Mastery Training starts on the 1st & 15th of every month. It runs for 2 weeks, Monday to Friday, 1 hour a day, plus a live Saturday Q&A.\n\nMorning session: 10:00–11:00 UK time\nEvening session: 20:00–21:00 UK time\nCourse fee: £120 (UK) / €145 (Europe) / $165 (USA)\n\nOne thing to know: you'll need your own TikTok Seller account set up before the course starts — we can help you with that if you need it.",
       action: { label: "Enrol in TikTok Training", type: "link", url: ENROL_URL }
     },
     ebay: {
       keywords: ["ebay", "e-bay"],
       menuLabel: "eBay Training",
       reply:
-        "eBay Training starts on the 1st & 15th of every month. It runs for 2 weeks, Monday to Friday, 1 hour a day, plus a live Saturday Q&A.\n\nMorning session: 11:00–12:00 UK time\nEvening session: 21:00–22:00 UK time\nCourse fee: £120\n\nIt's 10 live classes covering everything from e-commerce basics and product hunting to listing, eBay policies, order processing and scaling.",
+        "eBay Training starts on the 1st & 15th of every month. It runs for 2 weeks, Monday to Friday, 1 hour a day, plus a live Saturday Q&A.\n\nMorning session: 11:00–12:00 UK time\nEvening session: 21:00–22:00 UK time\nCourse fee: £120 (UK) / €145 (Europe) / $165 (USA)\n\nIt's 10 live classes covering everything from e-commerce basics and product hunting to listing, eBay policies, order processing and scaling.",
       action: { label: "Enrol in eBay Training", type: "link", url: ENROL_URL }
     },
     amazon: {
@@ -74,7 +74,7 @@
       keywords: ["price", "cost", "fee", "fees", "how much", "pricing", "payment", "pay", "bank transfer", "bank details", "installment", "instalment"],
       menuLabel: "Fees & Payment",
       reply:
-        "TikTok Mastery Training and eBay Training are both £120 for the full 2-week course. The £30 Account Creation Consultation is a separate one-off fee and isn't deducted from that price.\n\nPayment is by bank transfer, arranged directly over WhatsApp — we'll share our account details privately once you're ready to enrol.",
+        "TikTok Mastery Training and eBay Training are both £120 (UK) / €145 (Europe) / $165 (USA) for the full 2-week course — pay in whichever currency matches where you're based. The £30 Account Creation Consultation is a separate one-off fee and isn't deducted from that price.\n\nPayment is by bank transfer, arranged directly over WhatsApp — we'll share our account details privately once you're ready to enrol.",
       action: { label: "Ask About Payment", type: "whatsapp", text: "Hi, I'd like to know more about payment for a training course." }
     },
     curriculum: {
