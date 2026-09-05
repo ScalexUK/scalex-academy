@@ -222,18 +222,38 @@
   align-items: center;
   justify-content: center;
 }
-.poster-visual .icon-circle {
-  width: 220px; height: 220px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+
+/* Real platform logos/badges supplied by the client — shown as-is (not
+   cropped into a circle) so wordmarks and sub-text stay legible. */
+.poster-logo {
+  width: 100%;
+  max-width: 230px;
+  height: auto;
+  display: block;
 }
-.poster-visual svg { width: 96px; height: 96px; }
+.poster-logo-tiktok {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+.poster-logo-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-7) var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poster-logo-ebay { max-width: 220px; }
 
 @media (max-width: 860px) {
   .poster { grid-template-columns: 1fr; padding: var(--space-6); text-align: center; }
   .poster-list div, .poster-timing { justify-content: center; }
   .poster-visual { order: -1; }
-  .poster-visual .icon-circle { width: 160px; height: 160px; }
-  .poster-visual svg { width: 68px; height: 68px; }
+  .poster-logo { max-width: 180px; }
+  .poster-logo-card { padding: var(--space-6); }
+  .poster-logo-ebay { max-width: 170px; }
 }
 
 /* ---------- Curriculum detail (learn list, prerequisites, day-by-day) ---------- */

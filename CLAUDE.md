@@ -115,6 +115,8 @@ public/
   enrol.html               Online enrolment form (real page, submits via WhatsApp) — see below
   assets/
     logo.png                 Real logo, alpha-masked to a transparent circle — used site-wide (header, hero, footer, chatbot)
+    tiktok-badge.jpg          Real "TikTok Shop Seller Center" badge, client-supplied — shown in the TikTok poster's visual panel (#tiktok)
+    ebay-logo.png             Real eBay wordmark, client-supplied — shown in a white card in the eBay poster's visual panel (#ebay)
   css/
     style.css               Design system tokens (navy/blue brand palette), reset, header/nav/footer, buttons, cards
     home.css                 Section styles: hero, training cards, posters, consultation, payment info, about, contact
@@ -184,7 +186,7 @@ Nothing outstanding from the original Step 2 scope — chatbot, detailed trainin
 - A real payment link/checkout (Stripe Payment Link, PayPal, etc.) — client explicitly said not ready yet.
 - Publishing real bank account/sort-code details on the site — client chose to keep these WhatsApp-only for now.
 - Amazon Training pricing/dates — still Coming Soon, nothing confirmed.
-- Real photos anywhere on the site — still none; only the real logo (`public/assets/logo.png`) and icon/illustration SVGs.
+- Real photos anywhere on the site — still none; only the real logo (`public/assets/logo.png`), the real TikTok/eBay platform badges (`tiktok-badge.jpg`, `ebay-logo.png`, in the posters' visual panels), and icon/illustration SVGs.
 
 **Settled, not open:** VA-services (client said leave it out) and founder naming (client said use only "ScaleX Academy UK," no individual name) — see "Detailed training content" above. Don't revisit either without new instruction.
 
