@@ -97,6 +97,7 @@ Originally built to an Airbnb-inspired coral concept, then recolored to navy/blu
 - **Cards:** generous rounding (`--radius-lg: 24px`), soft diffuse shadows, hover-lift.
 - **Type:** Poppins (headings) + Inter (body) via Google Fonts.
 - **WhatsApp green** (`#25D366`) is used specifically for WhatsApp CTAs (recognizable, not part of the core brand palette) — everything else, including the chatbot header, uses the teal brand gradient.
+- **Stock photography:** three free-license photos from Unsplash (Unsplash License — free for commercial use, no attribution required, no copyright risk) were added for general atmosphere/professionalism: `hero-photo.jpg` (online seller with phone/laptop/boxes, in the hero visual panel, replacing the old plain-logo card — the floating "TikTok Mastery"/"eBay Training" cards still overlay on top of it), `about-photo.jpg` (a live video class in session, cropped into the About section's circular visual), and `consultation-photo.jpg` (a one-to-one video call, in a small circle next to the £30 price badge). These are generic stock photos, not real photos of ScaleX staff/students — that distinction still holds (see "Testimonials" for the no-real-people-photos privacy rule, which is about not using identifiable real students/staff, not about stock photography in general).
 - **Logo:** the client's real logo file, not a coded approximation. `Scalex logo.jpeg` (project root) is a JPEG with a near-white background outside its circular badge; since JPEGs can't carry transparency and the badge's own text is too close in color to the background to chroma-key safely, a **spatial circular alpha mask** (distance-from-center, not color-based) was generated via a one-off PowerShell/.NET (`System.Drawing`) script and saved as `public/assets/logo.png`. That transparent PNG is what's actually referenced everywhere the logo appears (header, hero, footer, chatbot header) — there is no more inline-SVG logo mark in the codebase. The logo image itself is unaffected by the site-wide recolor (it's a fixed photographed asset, not styled by tokens) and still shows its own navy/blue badge regardless of the surrounding chrome's hue — that's expected and correct.
 
 **Known CSS gotcha (hit twice — read before touching `.site-header`):** never put `backdrop-filter` (or `filter`/`transform`) on `.site-header` or any ancestor of `.main-nav`. It makes that ancestor the containing block for the mobile nav's `position: fixed` panel and silently collapses it to zero height, breaking the mobile menu with no visual error. `.site-header` uses a solid `rgba()` background for this reason — see the comment directly above it in `style.css`.
@@ -117,6 +118,9 @@ public/
     logo.png                 Real logo, alpha-masked to a transparent circle — used site-wide (header, hero, footer, chatbot)
     tiktok-badge.jpg          Real "TikTok Shop Seller Center" badge, client-supplied — shown in the TikTok poster's visual panel (#tiktok)
     ebay-logo.png             Real eBay wordmark, client-supplied — shown in a white card in the eBay poster's visual panel (#ebay)
+    hero-photo.jpg            Free-license stock photo (Unsplash) — online seller checking phone/laptop/boxes — hero visual panel
+    about-photo.jpg           Free-license stock photo (Unsplash) — live video class in session — About section's circular visual
+    consultation-photo.jpg    Free-license stock photo (Unsplash) — one-to-one video call — small circle next to the £30 price badge
   css/
     style.css               Design system tokens (navy/blue brand palette), reset, header/nav/footer, buttons, cards
     home.css                 Section styles: hero, training cards, posters, consultation, payment info, about, contact
@@ -186,7 +190,7 @@ Nothing outstanding from the original Step 2 scope — chatbot, detailed trainin
 - A real payment link/checkout (Stripe Payment Link, PayPal, etc.) — client explicitly said not ready yet.
 - Publishing real bank account/sort-code details on the site — client chose to keep these WhatsApp-only for now.
 - Amazon Training pricing/dates — still Coming Soon, nothing confirmed.
-- Real photos anywhere on the site — still none; only the real logo (`public/assets/logo.png`), the real TikTok/eBay platform badges (`tiktok-badge.jpg`, `ebay-logo.png`, in the posters' visual panels), and icon/illustration SVGs.
+- Real photos of ScaleX's own staff/students — still none, by design (privacy — see "Testimonials"). The site does now use three free-license stock photos (Unsplash, no attribution required) for general atmosphere — hero, About, and Consultation sections — plus the real logo (`public/assets/logo.png`) and the real TikTok/eBay platform badges (`tiktok-badge.jpg`, `ebay-logo.png`).
 
 **Settled, not open:** VA-services (client said leave it out) and founder naming (client said use only "ScaleX Academy UK," no individual name) — see "Detailed training content" above. Don't revisit either without new instruction.
 
